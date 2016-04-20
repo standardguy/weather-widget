@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<!-- For full web pages we would include meta tage to describe the page and add SEO valuable content -->
+
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="all">
+		<link type="text/css" rel="stylesheet" href="css/weather-widget.css" media="all">
+	</head>
+	<body>
+
+		<section id="cv-weather-widget">
+		  <img class="loading" src="images/loading.gif" />
+			<div class="current"></div>
+			<div class="forecast"></div>
+		</section>
+
+
+		<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+		<script src="javascript/weather-widget.js"></script>
+
+	
+		<!-- I would prefer to create partials and read them from  seperate directory, but for expediance I am leaving them in the page -->
+		<script id="weather-current" type="text/x-handlebars-template">
+		  <h1>{{location.city}}, {{location.region}}</h1>
+			<div id="current-weather">
+				<div class="temp">{{temp}}&deg;</div>
+				<figure>
+					<img src="http://l.yimg.com/a/i/us/we/52/{{code}}.gif" alt="{{text}}" title="{{text}}"/>
+					<figcaption>{{text}}</figcaption>
+				</figure>
+			</div>
+		</script>
+
+		<script id="weather-forecast-day" type="text/x-handlebars-template">
+			<ul id="forecast" class="list-inline">
+				{{#each forecast }}
+					 <li><div class="day">{{day}}</div><div class="high-low">{{high}}&deg;/{{low}}&deg;</div></li>
+				{{/each}}
+			</ul>	
+		</script>
+
+	</body>
+</html>

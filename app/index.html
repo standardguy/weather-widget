@@ -13,6 +13,7 @@
 
 		<section id="cv-weather-widget">
 		  <img class="loading" src="images/loading.gif" />
+		  <div class="header"></div>
 			<div class="current"></div>
 			<div class="forecast"></div>
 		</section>
@@ -25,8 +26,11 @@
 	
 		<!-- I would prefer to create partials and read them from seperate directory, but for expediency 
 		     I am leaving them in the page -->
+		<script id="weather-header" type="text/x-handlebars-template">
+		  <h1>{{city}}, {{region}}</h1>
+		</script>
+
 		<script id="weather-current" type="text/x-handlebars-template">
-		  <h1>{{location.city}}, {{location.region}}</h1>
 		  <h2 class="hidden">Current Conditions</h2>
 			<div id="current-weather">
 				<div class="temp">{{temp}}&deg;</div>

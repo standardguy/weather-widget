@@ -24,17 +24,19 @@ cv.widget = {
 		var context = {}
 		// load up a context obj that will populate the templates
 		context.current = data.query.results.channel.item.condition
-		$.extend(context.current, {location: data.query.results.channel.location} )
+		context.location = data.query.results.channel.location
 		context.forecast = data.query.results.channel.item.forecast.slice(0,5) //we only want the first five
 
 		//console.log("context: %o", context)
 
 		// generate the templates
+	  var headerCompiled = this.generateTemplate($("#weather-header"), context.location)
 		var currentCompiled = this.generateTemplate($("#weather-current"), context.current)
 		var forecastCompiled = this.generateTemplate($("#weather-forecast-day"), context)
 
 	  // Add the compiled html to the page
 	  $("#cv-weather-widget img").remove()
+	  $('.header').html(headerCompiled);
 	  $('.current').html(currentCompiled);
 	  $('.forecast').html(forecastCompiled);
 	},

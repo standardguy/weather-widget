@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<!-- For full web pages we would include meta tage to describe the page and add SEO valuable content -->
-
+	<!-- For full web pages we would include meta tags to describe the page and add SEO valuable content -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="all">
 		<link type="text/css" rel="stylesheet" href="css/weather-widget.css" media="all">
+		<!--[if lte IE 10]>
+			<link type="text/css" rel="stylesheet" href="css/weather-widget.ie9.css" media="all">
+		<![endif]-->
 	</head>
 	<body>
 
@@ -20,7 +23,8 @@
 		<script src="javascript/weather-widget.js"></script>
 
 	
-		<!-- I would prefer to create partials and read them from  seperate directory, but for expediance I am leaving them in the page -->
+		<!-- I would prefer to create partials and read them from seperate directory, but for expediency 
+		     I am leaving them in the page -->
 		<script id="weather-current" type="text/x-handlebars-template">
 		  <h1>{{location.city}}, {{location.region}}</h1>
 			<div id="current-weather">

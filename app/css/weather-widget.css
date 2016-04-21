@@ -4,17 +4,15 @@ html,body {
 }
 
 body {
-	background: #C7C7C4 ;
+	background-color: #C7C7C4;
+	min-width: 314px; 
+	min-height: 181px; 
   display: flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-justify-content: center;
   justify-content: center;
 }
 
-section {
+#cv-weather-widget {
 	background-color: #fff;
 	width: 310px;
 	height: 175px;
@@ -24,53 +22,60 @@ section {
 	box-shadow: 8px 8px 5px #555;
 }
 
-section h1{
-	font-size: 20px;
-  font-weight: 600;
-  margin: 0;
-}
-
-section #current-weather{
-	display:flex;
-	align-items: center;
-}
-
-section #current-weather .temp{
-	font-size:70px;
-}
-
-img.loading {
+#cv-weather-widget img.loading {
 	display: block;
   margin: 25px auto;
 }
 
-ul {
+#cv-weather-widget h1{
+	font-size: 1.5em;
+  font-weight: 600;
+  margin: 0;
+}
+
+#current-weather{
+	display:flex;
+	align-items: center;
+}
+
+#current-weather .temp{
+	font-size:5em;
+}
+
+#cv-weather-widget ul#forecast {
 	display: flex;
 	justify-content: center; 
 	margin-top: -10px;
-	height:44px;
+	height: 44px;
 }
 
-figcaption, li {
-	font-size: 12px;
+#cv-weather-widget figcaption, 
+#cv-weather-widget li {
+	font-size: .85em;
 	font-weight: 600;
 	text-align: center;
 }
 
-li {
+#cv-weather-widget #forecast li {
 	padding:0 8px;
 	border-right: 1px solid #ddd;
 
-	display:flex !important;
+	display:flex;
 	flex-flow: row wrap;
 	align-items: center;
   justify-content: center;
 }
 
-li .high-low{
-	margin-top: -10px;
+#cv-weather-widget #forecast li:last-child{
+ border-right: none;
 }
 
-li:last-child{
- border-right: none
+ #forecast li .day{
+	flex: 0 0 100%;
+}
+
+ #forecast li .high-low{
+	margin-top: -10px;
+	display:block;
+	clear: both;
 }

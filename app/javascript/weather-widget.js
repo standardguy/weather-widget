@@ -1,21 +1,28 @@
-$(function () {
+// use strict
+var cv = cv || {};
+cv.widget = {};
 
-	var context = {}
-	var weatherApiUrl = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20%3D%202448240&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
-	$.ajax({
-		url: weatherApiUrl,
-		success: function(data){
-			renderTemplates(data)
-		},
-		error: function(error){
-			// add code to handle the error for now let's just show some text.
-			showError()
-		}
-	})
+cv.widget = {
+	getData: function(weatherApiUrl){
+		//ie9  wants this if running from my filesystem
+		$.support.cors = true;  
 
+		var self = this;
+		$.ajax({
+			url: weatherApiUrl,
+			success: function(data){
+				self.renderTemplates(data)
+			},
+			error: function(error){
+				// add code to handle the error for now let's just show some text.
+				self.showError()
+			}
+		})
+	},
 
-	function renderTemplates(data){
-		// load up a contect obj that will populate the templates
+	renderTemplates: function(data){
+		var context = {}
+		// load up a context obj that will populate the templates
 		context.current = data.query.results.channel.item.condition
 		$.extend(context.current, {location: data.query.results.channel.location} )
 		context.forecast = data.query.results.channel.item.forecast.slice(0,5) //we only want the first five
@@ -38,10 +45,12 @@ $(function () {
 	  $("#cv-weather-widget img").remove()
 	  $('.current').html(currentCompiled);
 	  $('.forecast').html(forecastCompiled);
-	}
+	},
 
-	function showError(){
+	 showError: function(){
 		$("#cv-weather-widget").html("<h1>There was an error.<br />Please try again.</h1>")
 	}
+}
 
-});
+var weatherApiUrl = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20%3D%202448240&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
+cv.widget.getData(weatherApiUrl)

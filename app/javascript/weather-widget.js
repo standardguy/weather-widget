@@ -29,17 +29,9 @@ cv.widget = {
 
 		//console.log("context: %o", context)
 
-		// Grab the template script
-		var currentTemplate = $("#weather-current").html();
-	  var forecastTemplate = $("#weather-forecast-day").html();
-
-	  // Compile the template
-		var current = Handlebars.compile(currentTemplate);
-	  var forecast = Handlebars.compile(forecastTemplate);
-
-	  // Pass our data to the template
-	  var currentCompiled = current(context.current);
-	  var forecastCompiled = forecast(context);
+		// generate the templates
+		var currentCompiled = this.generateTemplate($("#weather-current"), context.current)
+		var forecastCompiled = this.generateTemplate($("#weather-forecast-day"), context)
 
 	  // Add the compiled html to the page
 	  $("#cv-weather-widget img").remove()
@@ -47,8 +39,17 @@ cv.widget = {
 	  $('.forecast').html(forecastCompiled);
 	},
 
-	 showError: function(){
+	showError: function(){
 		$("#cv-weather-widget").html("<h1>There was an error.<br />Please try again.</h1>")
+	},
+
+	generateTemplate: function(template, data){
+		// Grab the template script
+		var currentTemplate = $(template).html();
+	  // Compile the template
+		var current = Handlebars.compile(currentTemplate);
+	  // Pass our data to the template
+	  return current(data);
 	}
 }
 

@@ -27,6 +27,7 @@
 		     I am leaving them in the page -->
 		<script id="weather-current" type="text/x-handlebars-template">
 		  <h1>{{location.city}}, {{location.region}}</h1>
+		  <h2 class="hidden">Current Conditions</h2>
 			<div id="current-weather">
 				<div class="temp">{{temp}}&deg;</div>
 				<figure>
@@ -37,6 +38,7 @@
 		</script>
 
 		<script id="weather-forecast-day" type="text/x-handlebars-template">
+			<h2 class="hidden">Forecast</h2>
 			<ul id="forecast" class="list-inline">
 				{{#each forecast }}
 					 <li><div class="day">{{day}}</div><div class="high-low">{{high}}&deg;/{{low}}&deg;</div></li>

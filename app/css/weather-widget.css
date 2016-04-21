@@ -79,3 +79,13 @@ body {
 	display:block;
 	clear: both;
 }
+
+/*  Visually hide these, but let screen readers see it */
+.hidden {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}

@@ -11,7 +11,7 @@ cv.widget = {
 		$.ajax({
 			url: weatherApiUrl,
 			success: function(data){
-				self.renderTemplates(data)
+				self.renderTemplates(data.query.results.channel)
 			},
 			error: function(error){
 				// add code to handle the error for now let's just show some text.
@@ -23,9 +23,9 @@ cv.widget = {
 	renderTemplates: function(data){
 		var context = {}
 		// load up a context obj that will populate the templates
-		context.current = data.query.results.channel.item.condition
-		context.location = data.query.results.channel.location
-		context.forecast = data.query.results.channel.item.forecast.slice(0,5) //we only want the first five
+		context.current = data.item.condition
+		context.location = data.location
+		context.forecast = data.item.forecast.slice(0,5) //we only want the first five
 
 		//console.log("context: %o", context)
 

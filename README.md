@@ -20,3 +20,7 @@ I namespaced the widget functions to a cv object to avoid conflicting with any o
 ## Testing
 I wanted to write test code, but my time has run short. 
 My preference would be to write integration tests in Protractor, but here unit tests make a lot of sense. Unit tests would involve spying to see if calls are made from the ajax block.  Passing mocked data into the various functions, like `cv.widget.renderemplates()`, and validating the output. Integration tests would require using a mock JSON response from the API and checking for proper conditions on failure, existence of a loading spinner at start up, and maybe correct placement of data in the widget. We can also test the centering of the widget in a variable sized viewport.
+
+## Also worth noting
+- The URL in the challenge description was not correct.  I went to Yahoo's API page and generated a new one that returned data.
+- The challenge description instructs us to set the widget height at 160px.  The image in the instructions is closer to 175px high. I used the larger number so I could acheive a very close approimation of the widget layout as I saw it in the challenge description.

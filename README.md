@@ -24,3 +24,4 @@ My preference would be to write integration tests in Protractor, but here unit t
 ## Also worth noting
 - The URL in the challenge description was not correct.  I went to Yahoo's API page and generated a new one that returned data.
 - The challenge description instructs us to set the widget height at 160px.  The image in the instructions is closer to 175px high. I used the larger number so I could acheive a very close approimation of the widget layout as I saw it in the challenge description.
+- test comment
